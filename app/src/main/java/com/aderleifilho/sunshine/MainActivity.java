@@ -6,6 +6,11 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ArrayAdapter;
+
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -32,6 +37,21 @@ public class MainActivity extends AppCompatActivity {
         @Override
         public View onCreateView(LayoutInflater inflater, ViewGroup container,
                                  Bundle savedInstanceState) {
+
+            String[] forecastArray = {
+                    "Today - Sunny - 88 / 33",
+                    "Tomorrow - Foggy - 70 / 46",
+                    "Weds - Cloudy - 72 / 63",
+                    "Thursday - Rainy - 64 / 51",
+                    "Fri - Foggy - 70 / 46",
+                    "Sat - Sunny - 76 / 68",
+            };
+
+            List<String> weekForecast = new ArrayList<>(Arrays.asList(forecastArray));
+
+            ArrayAdapter<String> adapter = new ArrayAdapter<>(getActivity(),
+                    R.layout.list_item_forecast, weekForecast);
+
             return inflater.inflate(R.layout.fragment_main, container, false);
         }
     }
